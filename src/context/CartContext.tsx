@@ -127,6 +127,8 @@ export const useCartContext = (): CartContextValue => {
   return contextValue;
 };
 
+export const useCart = (): CartContextValue => useCartContext();
+
 interface CartProviderProps {
   children: ReactNode;
 }
