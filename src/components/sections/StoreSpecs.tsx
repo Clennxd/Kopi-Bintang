@@ -1,91 +1,88 @@
 import { motion } from "framer-motion";
 import {
-  Armchair,
-  Banknote,
-  CarFront,
+  Car,
   Coffee,
+  CreditCard,
   Dog,
-  Droplets,
-  Leaf,
+  Heart,
+  Laptop,
+  ShieldCheck,
   Sparkles,
+  Trees,
   Wifi,
   Zap,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
-interface SpecCard {
+interface AreaCard {
   title: string;
   icon: LucideIcon;
-  image: string;
-  highlights: string[];
   description: string;
+  tags: string[];
 }
 
-const SPEC_CARDS: SpecCard[] = [
+const AREA_CARDS: AreaCard[] = [
   {
-    title: "Indoor Work-Friendly Zone",
-    icon: Armchair,
-    image:
-      "https://images.unsplash.com/photo-1521017432531-fbd92d768814?q=80&w=800&auto=format&fit=crop",
+    title: "Indoor Work Zone",
+    icon: Laptop,
     description:
-      "Ruang ber-AC sejuk untuk fokus maksimal — entah mengejar deadline atau menyeruput kopi sambil membaca.",
-    highlights: [
-      "Full AC sejuk",
-      "Colokan listrik di setiap meja",
-      "Wi-Fi 100 Mbps",
-      "Kursi ergonomis untuk kerja / tugas",
-    ],
+      "Ruang ber-AC yang tenang dan dingin, dirancang khusus untuk WFC, tugas kuliah, atau meeting santai.",
+    tags: ["Full AC", "Wi-Fi 100 Mbps", "Kursi Ergonomis"],
   },
   {
     title: "Slow Bar Experience",
     icon: Coffee,
-    image:
-      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop",
     description:
-      "Duduk berhadapan langsung dengan barista, berdiskusi profil rasa, dan menyaksikan seduhan V60 / Aeropress secara langsung.",
-    highlights: [
-      "Bar interaktif dengan barista",
-      "Demo seduhan V60 & Aeropress",
-      "Diskusi profil rasa & origin",
-      "Kurasi biji single origin",
-    ],
+      "Duduk berhadapan dengan barista, berdiskusi profil rasa, dan menikmati seni seduhan manual V60.",
+    tags: ["Manual Brew", "Single Origin", "Barista Interaction"],
   },
   {
-    title: "Outdoor Green Garden",
-    icon: Leaf,
-    image:
-      "https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=800&auto=format&fit=crop",
+    title: "Outdoor Green Sanctuary",
+    icon: Trees,
     description:
-      "Sirkulasi udara terbuka yang asri dengan tanaman hijau — area smoking ramah dan santai untuk sore yang panjang.",
-    highlights: [
-      "Sirkulasi udara terbuka",
-      "Asri dengan tanaman hijau",
-      "Area smoking ramah",
-      "Santai & instagramable",
-    ],
+      "Area terbuka hijau dengan sirkulasi udara alami dan pencahayaan matahari yang segar untuk ngobrol santai.",
+    tags: ["Asri & Sejuk", "Smoking Friendly", "Pet Friendly"],
   },
 ];
 
-interface QuickFacility {
-  label: string;
+interface Facility {
+  title: string;
+  subtitle: string;
   icon: LucideIcon;
 }
 
-const QUICK_FACILITIES: QuickFacility[] = [
-  { label: "Musholla Nyaman", icon: Sparkles },
-  { label: "Area Parkir Luas", icon: CarFront },
-  { label: "Pet Friendly Outdoor", icon: Dog },
-  { label: "QRIS & Cashless Ready", icon: Banknote },
+const FACILITIES: Facility[] = [
+  {
+    title: "Colokan Listrik",
+    subtitle: "Tersedia di tiap meja",
+    icon: Zap,
+  },
+  {
+    title: "High-Speed Wi-Fi",
+    subtitle: "Koneksi stabil 100 Mbps",
+    icon: Wifi,
+  },
+  {
+    title: "Musholla Bersih",
+    subtitle: "Tempat ibadah privat & nyaman",
+    icon: Heart,
+  },
+  {
+    title: "Parkir Luas",
+    subtitle: "Aman untuk mobil & motor",
+    icon: Car,
+  },
+  {
+    title: "Pet-Friendly",
+    subtitle: "Ramah hewan di area outdoor",
+    icon: Dog,
+  },
+  {
+    title: "QRIS & Cashless",
+    subtitle: "Transaksi praktis & cepat",
+    icon: CreditCard,
+  },
 ];
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (index: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, delay: index * 0.1, ease: "easeOut" as const },
-  }),
-};
 
 const StoreSpecs = (): JSX.Element => {
   return (
@@ -95,138 +92,115 @@ const StoreSpecs = (): JSX.Element => {
       className="scroll-mt-28 bg-white px-6 py-16 sm:py-20 lg:px-8 lg:py-24"
     >
       <div className="mx-auto max-w-6xl">
-        {/* Heading */}
+        {/* Header Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="mx-auto max-w-3xl text-center"
         >
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#82541A]">
-            Fasilitas & Suasana
-          </p>
+          <span className="inline-flex items-center gap-2 bg-[#82541A]/10 text-[#82541A] px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider">
+            <Sparkles className="h-3.5 w-3.5" />
+            Kenyamanan Ruang
+          </span>
           <h2
             id="specs-heading"
-            className="mt-3 font-display text-[30px] font-bold leading-tight text-[#1D1B1A] sm:text-4xl lg:text-[42px]"
+            className="mt-4 font-display text-[30px] font-bold leading-tight text-[#1D1B1A] sm:text-4xl lg:text-[42px]"
             style={{ fontFamily: "Playfair Display, serif" }}
           >
-            Kenyamanan yang
-            <br />
-            <span className="font-normal italic text-[#82541A]">
-              Kami Siapkan untuk Anda
-            </span>
+            Dirancang untuk Setiap Kebutuhan Hari Anda
           </h2>
-          <p
-            className="mt-4 text-sm leading-relaxed text-[#1D1B1A]/60 sm:text-[15px]"
-            style={{ fontFamily: "Inter, sans-serif" }}
-          >
-            Tiga zona dengan karakter berbeda — pilih sudut yang paling
-            memanggil hati Anda hari ini.
+          <p className="mt-4 text-sm leading-relaxed text-[#1D1B1A]/60 sm:text-[15px]">
+            Dari suasana hening untuk fokus bekerja hingga sudut asri untuk bersantai bersama teman.
           </p>
+          <div className="mx-auto mt-4 flex justify-center">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-[#FEC07B]/20 px-3 py-1 text-xs font-medium text-[#794C12] ring-1 ring-[#FEC07B]/30">
+              <ShieldCheck className="h-3.5 w-3.5" />
+              Terkurasi untuk kenyamanan maksimal
+            </span>
+          </div>
         </motion.div>
 
-        {/* Grid 3 Kartu Area Kedai */}
-        <div className="mt-12 grid gap-6 sm:gap-8 lg:grid-cols-3">
-          {SPEC_CARDS.map((card, index) => (
+        {/* Bagian 1: 3 Area Utama Kedai */}
+        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          {AREA_CARDS.map((card, index) => (
             <motion.article
               key={card.title}
-              custom={index}
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              whileHover={{ y: -6 }}
-              className="group flex flex-col overflow-hidden rounded-[28px] bg-[#FEF8F6] shadow-[0_8px_40px_rgba(37,25,16,0.08)] ring-1 ring-[#82541A]/10 transition-shadow duration-300 hover:shadow-[0_16px_48px_rgba(37,25,16,0.13)]"
+              transition={{ duration: 0.5, delay: index * 0.08, ease: "easeOut" }}
+              className="flex flex-col justify-between bg-white rounded-3xl p-6 sm:p-8 border border-[#E7E1DF] shadow-sm hover:shadow-xl transition-all duration-300"
             >
-              {/* Image */}
-              <div className="relative h-52 overflow-hidden">
-                <img
-                  src={card.image}
-                  alt={card.title}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#251910]/60 via-transparent to-transparent" />
-                <span className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-[#251910] shadow-md backdrop-blur">
-                  <card.icon className="h-5 w-5" />
+              <div>
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#FEC07B]/20 text-[#82541A] ring-1 ring-[#FEC07B]/30">
+                  <card.icon className="h-6 w-6" />
                 </span>
-                <span className="absolute bottom-4 left-4 rounded-full bg-[#251910] px-3.5 py-1.5 text-xs font-semibold tracking-wide text-white">
-                  {index === 0
-                    ? "Zona Produktivitas"
-                    : index === 1
-                      ? "Zona Eksplorasi Rasa"
-                      : "Zona Rehat Hijau"}
-                </span>
-              </div>
-
-              <div className="flex flex-1 flex-col p-6 sm:p-7">
                 <h3
-                  className="font-display text-lg font-bold leading-tight text-[#1D1B1A]"
+                  className="mt-5 font-display text-xl font-bold leading-tight text-[#1D1B1A]"
                   style={{ fontFamily: "Playfair Display, serif" }}
                 >
                   {card.title}
                 </h3>
-                <p
-                  className="mt-2 text-sm leading-relaxed text-[#1D1B1A]/65"
-                  style={{ fontFamily: "Inter, sans-serif" }}
-                >
+                <p className="mt-3 text-sm leading-relaxed text-[#1D1B1A]/65">
                   {card.description}
                 </p>
-
-                <ul className="mt-5 space-y-2.5">
-                  {card.highlights.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-center gap-2.5 text-sm text-[#1D1B1A]/80"
-                      style={{ fontFamily: "Inter, sans-serif" }}
-                    >
-                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#FEC07B]/60 text-[#82541A]">
-                        {item.includes("AC") ? (
-                          <Droplets className="h-3.5 w-3.5" />
-                        ) : item.includes("Wi-Fi") ? (
-                          <Wifi className="h-3.5 w-3.5" />
-                        ) : item.includes("Colokan") ? (
-                          <Zap className="h-3.5 w-3.5" />
-                        ) : (
-                          <span className="h-1.5 w-1.5 rounded-full bg-[#82541A]" />
-                        )}
-                      </span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+              </div>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {card.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-full bg-[#FEF8F6] px-3 py-1.5 text-xs font-medium text-[#82541A] ring-1 ring-[#E7E1DF]"
+                  >
+                    {tag}
+                  </span>
+                ))}
               </div>
             </motion.article>
           ))}
         </div>
 
-        {/* Baris Fasilitas Cepat */}
+        {/* Bagian 2: Fasilitas Penunjang Lengkap */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-12 rounded-[24px] bg-[#251910] px-6 py-7 shadow-xl sm:px-8 lg:px-10"
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="mt-16"
         >
-          <div className="flex flex-col items-center justify-between gap-6 lg:flex-row">
-            <p
-              className="font-display text-lg font-semibold italic text-[#FEC07B] sm:text-xl"
-              style={{ fontFamily: "Playfair Display, serif" }}
-            >
-              Fasilitas penunjang lengkap
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
-              {QUICK_FACILITIES.map((facility) => (
-                <span
-                  key={facility.label}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2.5 text-sm font-medium text-white backdrop-blur transition-colors hover:bg-white/15"
-                >
-                  <facility.icon className="h-4 w-4 shrink-0 text-[#FEC07B]" />
-                  {facility.label}
+          <div className="flex items-center gap-4">
+            <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#E7E1DF] to-transparent" />
+            <h3 className="text-center text-sm font-bold uppercase tracking-[0.18em] text-[#1D1B1A]">
+              Fasilitas Penunjang Lengkap
+            </h3>
+            <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#E7E1DF] to-transparent" />
+          </div>
+          <div className="mx-auto mt-2 h-1 w-12 rounded-full bg-[#FEC07B]/60" />
+
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+            {FACILITIES.map((facility, index) => (
+              <motion.div
+                key={facility.title}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="flex flex-col items-center justify-center gap-3 rounded-3xl bg-white p-5 text-center border border-[#E7E1DF] shadow-sm hover:shadow-md transition-all duration-300 sm:p-6"
+              >
+                <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#FEC07B]/20 text-[#82541A] ring-1 ring-[#FEC07B]/30">
+                  <facility.icon className="h-5 w-5" />
                 </span>
-              ))}
-            </div>
+                <div>
+                  <p className="text-sm font-bold leading-tight text-[#1D1B1A]">
+                    {facility.title}
+                  </p>
+                  <p className="mt-1 text-xs leading-snug text-[#1D1B1A]/55">
+                    {facility.subtitle}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </motion.div>
       </div>
