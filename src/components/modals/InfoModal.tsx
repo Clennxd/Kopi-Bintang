@@ -28,7 +28,7 @@ interface InfoContent {
 
 const INFO_CONTENT: Record<InfoTopic, InfoContent> = {
   privacy: {
-    title: 'Kebijakan Privasi',
+    title: 'Kebijakan Privasi Kopi Bintang',
     icon: ShieldCheck,
     intro:
       'Privasi Anda penting bagi kami. Berikut ringkasan bagaimana Kopi Bintang menangani data Anda.',
@@ -48,7 +48,7 @@ const INFO_CONTENT: Record<InfoTopic, InfoContent> = {
     ]
   },
   terms: {
-    title: 'Syarat & Ketentuan',
+    title: 'Syarat & Ketentuan Pemesanan',
     icon: ScrollText,
     intro:
       'Dengan melakukan pesanan melalui aplikasi ini, Anda menyetujui ketentuan layanan berikut.',
