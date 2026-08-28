@@ -3,9 +3,8 @@ import { CartProvider } from "./context/CartContext";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import HeroSection from "./components/sections/HeroSection";
-import StorePhilosophy from "./components/sections/StorePhilosophy";
+import AboutStory from "./components/sections/AboutStory";
 import StoreSpecs from "./components/sections/StoreSpecs";
-import BrandStory from "./components/sections/BrandStory";
 import MenuCatalog from "./components/sections/MenuCatalog";
 import StoreLocation from "./components/sections/StoreLocation";
 import ProductDetailModal from "./components/modals/ProductDetailModal";
@@ -17,12 +16,10 @@ const KopiBintangShell = (): JSX.Element => {
   const [infoTopic, setInfoTopic] = useState<InfoTopic | null>(null);
 
   useEffect(() => {
-    // Ensure smooth anchor handling and scroll restoration
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
 
-    // Smooth scroll for hash links if directly loaded with hash
     const hash = window.location.hash;
     if (hash.length > 0) {
       const id = hash.slice(1);
@@ -59,9 +56,8 @@ const KopiBintangShell = (): JSX.Element => {
       <Navbar />
       <main>
         <HeroSection />
-        <StorePhilosophy />
+        <AboutStory />
         <StoreSpecs />
-        <BrandStory />
         <MenuCatalog />
         <StoreLocation />
       </main>
